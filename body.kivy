@@ -1,0 +1,1023 @@
+#:import dp kivy.metrics.dp
+
+<Badge@RelativeLayout>:
+	source: ''
+	text: ''
+	size_hint: None, None
+	size: dp(56), dp(24)
+	canvas.before:
+		Color:
+			rgba: 1, 1, 1, 0
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	Image:
+		source: root.source
+		size_hint: None, None
+		size: root.size
+		pos: root.pos
+		allow_stretch: True
+		keep_ratio: True
+	Label:
+		text: root.text
+		font_size: dp(8)
+		color: 0, 0, 0, 1
+		size_hint: None, None
+		size: self.texture_size
+		pos: root.x + dp(7), root.y + dp(6)
+
+<Card@RelativeLayout>:
+	size_hint: None, None
+	size: dp(350), dp(230)
+	canvas.before:
+		Color:
+			rgba: 1, 1, 1, 1
+		RoundedRectangle:
+			pos: self.pos
+			size: self.size
+			radius: [dp(20), dp(20), dp(20), dp(20)]
+
+<FooterIcon@ButtonBehavior+RelativeLayout>:
+	icon_source: ''
+	size_hint: None, None
+	size: dp(43), dp(43)
+	canvas.before:
+		Color:
+			rgba: 1, 1, 1, 1
+		Rectangle:
+			source: 'footer_icon_bg.png'
+			pos: self.pos
+			size: self.size
+	Image:
+		source: root.icon_source
+		allow_stretch: True
+		keep_ratio: True
+		size_hint: None, None
+		size: dp(26), dp(26)
+		pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+<Header@BoxLayout>:
+	orientation: 'horizontal'
+	size_hint_y: None
+	height: dp(107)
+	padding: dp(30), 0, dp(30), 0
+	spacing: dp(12)
+	canvas.before:
+		Color:
+			rgba: 0, 0, 0, 0
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	BoxLayout:
+		id: innerLinearLayout
+		orientation: 'horizontal'
+		size_hint_x: 0.7
+		height: dp(53)
+		padding: dp(10), 0, dp(10), 0
+		spacing: dp(8)
+		canvas.before:
+			Color:
+				rgba: 1, 1, 1, 1
+			RoundedRectangle:
+				pos: self.pos
+				size: self.size
+				radius: [dp(15), dp(15), dp(15), dp(15)]
+		Image:
+			id: homeImage
+			source: 'foxh.png'
+			size_hint_x: None
+			allow_stretch: True
+			keep_ratio: True
+			width: self.texture_size[0] if self.texture else dp(26)
+		Label:
+			id: footprintText
+			text: 'Calculate Your Footprint'
+			color: 0, 0, 0, 1
+			font_size: '16sp'
+			halign: 'left'
+			valign: 'middle'
+			text_size: self.size
+		Image:
+			id: progressImage
+			source: 'arrow.png'
+			size_hint_x: None
+			allow_stretch: True
+			keep_ratio: True
+			width: self.texture_size[0] if self.texture else dp(20)
+	Widget:
+		size_hint_x: 0.3
+		canvas.before:
+			Color:
+				rgba: 0, 0, 0, 0
+			Rectangle:
+				pos: self.pos
+				size: self.size
+	RelativeLayout:
+		size_hint_x: None
+		width: dp(56)
+		Image:
+			id: userImage2
+			source: 'user.png'
+			size_hint: None, None
+			size: dp(56), dp(56)
+			pos_hint: {'center_y': 0.5}
+			allow_stretch: True
+			keep_ratio: True
+
+<Footer@BoxLayout>:
+	orientation: 'horizontal'
+	size_hint_y: None
+	height: dp(77)
+	padding: 0, 0, 0, 0
+	spacing: 0
+	canvas.before:
+		Color:
+			rgba: 1, 1, 1, 1
+		Rectangle:
+			source: 'footer_background.png'
+			pos: self.pos
+			size: self.size
+	Widget:
+		size_hint_x: 0.13
+	FooterIcon:
+		icon_source: 'fox.png'
+	Widget:
+		size_hint_x: 0.12
+	FooterIcon:
+		id: hehe
+		icon_source: 'search.png'
+	Widget:
+		size_hint_x: 0.12
+	FooterIcon:
+		id: progress
+		icon_source: 'progress.png'
+	Widget:
+		size_hint_x: 0.12
+	FooterIcon:
+		id: connect
+		icon_source: 'connect.png'
+	Widget:
+		size_hint_x: 0.12
+	FooterIcon:
+		icon_source: 'reward.png'
+	Widget:
+		size_hint_x: 0.13
+
+<SectionTitle@BoxLayout>:
+	text: ''
+	left_padding: dp(0)
+	size_hint_y: None
+	height: self.minimum_height
+	padding: self.left_padding, 0, 0, 0
+	Label:
+		text: root.text
+		color: 0.105, 0.263, 0.196, 1
+		font_size: '13sp'
+		size_hint_y: None
+		height: self.texture_size[1]
+		halign: 'left'
+		valign: 'middle'
+		text_size: self.size
+
+<CardRow@ScrollView>:
+	size_hint_y: None
+	height: dp(300)
+	do_scroll_x: True
+	do_scroll_y: False
+	bar_width: 0
+
+<Body@BoxLayout>:
+	orientation: 'vertical'
+	canvas.before:
+		Color:
+			rgba: 0.953, 0.965, 0.992, 1
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	Header:
+		id: header
+	ScrollView:
+		id: scroll
+		do_scroll_x: False
+		do_scroll_y: True
+		bar_width: 0
+		GridLayout:
+			cols: 1
+			size_hint_y: None
+			height: self.minimum_height
+			padding: 0, dp(157), 0, dp(70)
+			spacing: dp(10)
+			BoxLayout:
+				size_hint_y: None
+				height: IntroText.texture_size[1]
+				padding: dp(35), 0, 0, 0
+				Label:
+					id: IntroText
+					text: "It’s your chance to\ntake action, Shihab."
+					font_size: '32sp'
+					bold: True
+					color: 0.105, 0.263, 0.196, 1
+					markup: True
+					halign: 'left'
+					valign: 'top'
+					text_size: self.texture_size
+					shorten: False
+					shorten_from: 'right'
+			SectionTitle:
+				text: 'Recommended actions'
+				left_padding: dp(60)
+			CardRow:
+				BoxLayout:
+					orientation: 'horizontal'
+					size_hint_x: None
+					width: self.minimum_width
+					spacing: dp(120)
+					Widget:
+						size_hint_x: None
+						width: dp(60)
+					Card:
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0, 0, 0, 0
+							BoxLayout:
+								orientation: 'vertical'
+								size_hint_x: 0.5
+								padding: dp(20), dp(30), dp(10), 0
+								spacing: dp(10)
+								Label:
+									text: 'Reduce food waste'
+									font_size: '16sp'
+									color: 0, 0, 0, 1
+									bold: True
+									shorten: False
+								Label:
+									text: 'Saving leftovers or planning\nmeals can reduce waste\nand save up to 500g of CO₂\nper day.'
+									font_size: '10sp'
+									color: 0, 0, 0, 1
+									shorten: False
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(8)
+									padding: dp(0), 0, 0, 0
+									Badge:
+										source: 'shadowv1.png'
+										text: '400g'
+									Badge:
+										source: 'shadowv2.png'
+										text: '+25'
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(15)
+									padding: dp(20), 0, 0, 0
+									Image:
+										source: 'cardgf.png'
+										allow_stretch: True
+										keep_ratio: True
+									Image:
+										source: 'cardgf2.png'
+										allow_stretch: True
+										keep_ratio: True
+							BoxLayout:
+								orientation: 'vertical'
+								size_hint_x: 0.5
+								RelativeLayout:
+									padding: 0, dp(30), 0, 0
+									Image:
+										source: 'shadowv.png'
+										size_hint: None, None
+										size: dp(160), dp(160)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+										allow_stretch: True
+										keep_ratio: True
+									Image:
+										source: 'meal1.png'
+										size_hint: None, None
+										size: dp(140), dp(140)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+										allow_stretch: True
+										keep_ratio: True
+					Card:
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0, 0, 0, 0
+							BoxLayout:
+								orientation: 'vertical'
+								size_hint_x: 0.6
+								padding: dp(20), dp(30), dp(10), 0
+								spacing: dp(10)
+								Label:
+									text: 'Walk for short distances'
+									font_size: '16sp'
+									color: 0, 0, 0, 1
+									bold: True
+								Label:
+									text: 'Choosing to walk instead\nof drive for under 3km\ncan save ~0.4kg of CO₂\nper trip.'
+									font_size: '10sp'
+									color: 0, 0, 0, 1
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(8)
+									Badge:
+										source: 'shadowv1.png'
+										text: '400g'
+									Badge:
+										source: 'shadowv2.png'
+										text: '+5'
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(15)
+									padding: dp(20), 0, 0, 0
+									Image:
+										source: 'cardgf.png'
+										allow_stretch: True
+									Image:
+										source: 'card21.png'
+										allow_stretch: True
+									Image:
+										source: 'card22.png'
+										allow_stretch: True
+							BoxLayout:
+								size_hint_x: 0.4
+								RelativeLayout:
+									padding: 0, dp(30), 0, 0
+									Image:
+										source: 'walkshadow.png'
+										size_hint: None, None
+										size: dp(150), dp(150)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+									Image:
+										source: 'walk.png'
+										size_hint: None, None
+										size: dp(130), dp(130)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+					Card:
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0, 0, 0, 0
+							BoxLayout:
+								orientation: 'vertical'
+								size_hint_x: 0.6
+								padding: dp(20), dp(30), dp(10), 0
+								spacing: dp(10)
+								Label:
+									text: 'Use energy-saving mode on devices'
+									font_size: '16sp'
+									color: 0, 0, 0, 1
+									bold: True
+								Label:
+									text: 'Lower screen brightness,\nreduce refresh rates, and\nactivate eco-mode on\nyour laptop or phone.'
+									font_size: '10sp'
+									color: 0, 0, 0, 1
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(8)
+									Badge:
+										source: 'shadowv1.png'
+										text: '60g'
+									Badge:
+										source: 'shadowv2.png'
+										text: '+5'
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(15)
+									padding: dp(20), 0, 0, 0
+									Image:
+										source: 'card31.png'
+									Image:
+										source: 'card32.png'
+							BoxLayout:
+								size_hint_x: 0.4
+								RelativeLayout:
+									padding: 0, dp(30), 0, 0
+									Image:
+										source: 'energy.png'
+										size_hint: None, None
+										size: dp(150), dp(150)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+									Image:
+										source: 'card3.png'
+										size_hint: None, None
+										size: dp(130), dp(130)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+					Card:
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0, 0, 0, 0
+							BoxLayout:
+								orientation: 'vertical'
+								size_hint_x: 0.6
+								padding: dp(20), dp(30), dp(10), 0
+								spacing: dp(10)
+								Label:
+									text: 'Educate a friend about carbon impact'
+									font_size: '16sp'
+									color: 0, 0, 0, 1
+									bold: True
+								Label:
+									text: 'Teaching someone\ndoubles the reach of your\nactions — awareness\ndrives culture change.'
+									font_size: '10sp'
+									color: 0, 0, 0, 1
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(8)
+									Badge:
+										source: 'shadowv1.png'
+										text: '400g'
+									Badge:
+										source: 'shadowv2.png'
+										text: '+15'
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(15)
+									padding: dp(20), 0, 0, 0
+									Image:
+										source: 'card4p1.png'
+									Image:
+										source: 'cardgf2.png'
+									Image:
+										source: 'card4p2.png'
+							BoxLayout:
+								size_hint_x: 0.4
+								RelativeLayout:
+									padding: 0, dp(30), 0, 0
+									Image:
+										source: 'card42shadow.png'
+										size_hint: None, None
+										size: dp(150), dp(150)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+									Image:
+										source: 'card41png.png'
+										size_hint: None, None
+										size: dp(130), dp(130)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+						Widget:
+							size_hint_x: None
+							width: dp(60)
+			SectionTitle:
+				text: 'Plastic Free!'
+				left_padding: dp(60)
+			CardRow:
+				BoxLayout:
+					orientation: 'horizontal'
+					size_hint_x: None
+					width: self.minimum_width
+					spacing: dp(120)
+					Widget:
+						size_hint_x: None
+						width: dp(60)
+					Card:
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0, 0, 0, 0
+							BoxLayout:
+								orientation: 'vertical'
+								size_hint_x: 0.5
+								padding: dp(20), dp(30), dp(10), 0
+								spacing: dp(10)
+								Label:
+									text: 'Drink Tap water instead of bottled'
+									font_size: '16sp'
+									color: 0, 0, 0, 1
+									bold: True
+								Label:
+									text: 'Switching to refillable\nwater bottles cuts both /nplastic use and ~200g CO₂\nper bottle.'
+									font_size: '10sp'
+									color: 0, 0, 0, 1
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(8)
+									Badge:
+										source: 'shadowv1.png'
+										text: '200g'
+									Badge:
+										source: 'shadowv2.png'
+										text: '+5'
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(15)
+									padding: dp(20), 0, 0, 0
+									Image:
+										source: 'card2p1.png'
+									Image:
+										source: 'cardgf2.png'
+							BoxLayout:
+								size_hint_x: 0.5
+								RelativeLayout:
+									padding: 0, dp(30), 0, 0
+									Image:
+										source: 'beverage2shadow.png'
+										size_hint: None, None
+										size: dp(150), dp(150)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+									Image:
+										source: 'beverage2.png'
+										size_hint: None, None
+										size: dp(130), dp(130)
+					Card:
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0, 0, 0, 0
+							BoxLayout:
+								orientation: 'vertical'
+								size_hint_x: 0.5
+								padding: dp(20), dp(30), dp(10), 0
+								spacing: dp(10)
+								Label:
+									text: 'Take part in a local clean-up'
+									font_size: '16sp'
+									color: 0, 0, 0, 1
+									bold: True
+								Label:
+									text: 'Cleaning up your\nneighborhood removes waste\nand builds eco-responsibility\nin the community.'
+									font_size: '10sp'
+									color: 0, 0, 0, 1
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(8)
+									Badge:
+										source: 'shadowv1.png'
+										text: '500g'
+									Badge:
+										source: 'shadowv2.png'
+										text: '+20'
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(15)
+									padding: dp(20), 0, 0, 0
+									Image:
+										source: 'gif22.png'
+									Image:
+										source: 'card21.png'
+							BoxLayout:
+								size_hint_x: 0.5
+								RelativeLayout:
+									padding: 0, dp(30), 0, 0
+									Image:
+										source: 'card22shadow.png'
+										size_hint: None, None
+										size: dp(150), dp(150)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+									Image:
+										source: 'card22img.png'
+										size_hint: None, None
+										size: dp(130), dp(130)
+					Card:
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0, 0, 0, 0
+							BoxLayout:
+								orientation: 'vertical'
+								size_hint_x: 0.6
+								padding: dp(20), dp(30), dp(10), 0
+								spacing: dp(10)
+								Label:
+									text: 'Educate a friend about carbon impact'
+									font_size: '16sp'
+									color: 0, 0, 0, 1
+									bold: True
+								Label:
+									text: 'Teaching someone\ndoubles the reach of your\nactions — awareness\ndrives culture change.'
+									font_size: '10sp'
+									color: 0, 0, 0, 1
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(8)
+									Badge:
+										source: 'shadowv1.png'
+										text: '400g'
+									Badge:
+										source: 'shadowv2.png'
+										text: '+15'
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(15)
+									padding: dp(20), 0, 0, 0
+									Image:
+										source: 'card4p1.png'
+									Image:
+										source: 'cardgf2.png'
+									Image:
+										source: 'card4p2.png'
+							BoxLayout:
+								size_hint_x: 0.4
+								RelativeLayout:
+									padding: 0, dp(30), 0, 0
+									Image:
+										source: 'card42shadow.png'
+										size_hint: None, None
+										size: dp(150), dp(150)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+									Image:
+										source: 'card41png.png'
+										size_hint: None, None
+										size: dp(130), dp(130)
+					Card:
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0, 0, 0, 0
+							BoxLayout:
+								orientation: 'vertical'
+								size_hint_x: 0.5
+								padding: dp(20), dp(30), dp(10), 0
+								spacing: dp(10)
+								Label:
+									text: 'Let clothes air-dry today'
+									font_size: '16sp'
+									color: 0, 0, 0, 1
+									bold: True
+								Label:
+									text: 'One load in the dryer\nconsumes a lot of energy.\nDrying clothes naturally can\nsave ~2.3kg CO₂.'
+									font_size: '10sp'
+									color: 0, 0, 0, 1
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(8)
+									Badge:
+										source: 'shadowv1.png'
+										text: '2300g'
+									Badge:
+										source: 'shadowv2.png'
+										text: '+25'
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(15)
+									padding: dp(20), 0, 0, 0
+									Image:
+										source: 'cardgf2.png'
+									Image:
+										source: 'card22.png'
+							BoxLayout:
+								size_hint_x: 0.5
+								RelativeLayout:
+									padding: 0, dp(30), 0, 0
+									Image:
+										source: 'card24img.png'
+										size_hint: None, None
+										size: dp(150), dp(150)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+									Image:
+										source: 'card24shadow.png'
+										size_hint: None, None
+										size: dp(130), dp(130)
+			SectionTitle:
+				text: 'New in Greentail'
+				left_padding: dp(60)
+			CardRow:
+				BoxLayout:
+					orientation: 'horizontal'
+					size_hint_x: None
+					width: self.minimum_width
+					spacing: dp(120)
+					Widget:
+						size_hint_x: None
+						width: dp(60)
+					Card:
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0, 0, 0, 0
+							BoxLayout:
+								orientation: 'vertical'
+								size_hint_x: 0.5
+								padding: dp(20), dp(30), dp(10), 0
+								spacing: dp(10)
+								Label:
+									text: 'Eat more plants this week'
+									font_size: '16sp'
+									color: 0, 0, 0, 1
+									bold: True
+								Label:
+									text: 'Eating less meat just\ntwice a week helps\nreduce up to 2.4kg of\nCO₂.'
+									font_size: '10sp'
+									color: 0, 0, 0, 1
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(8)
+									Badge:
+										source: 'shadowv1.png'
+										text: '2400g'
+									Badge:
+										source: 'shadowv2.png'
+										text: '+10'
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(15)
+									padding: dp(20), 0, 0, 0
+									Image:
+										source: 'cardgf.png'
+									Image:
+										source: 'cardgf2.png'
+							BoxLayout:
+								size_hint_x: 0.5
+								RelativeLayout:
+									padding: 0, dp(30), 0, 0
+									Image:
+										source: 'card31img.png'
+										size_hint: None, None
+										size: dp(150), dp(150)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+									Image:
+										source: 'card31shadow.png'
+										size_hint: None, None
+										size: dp(130), dp(130)
+					Card:
+						BoxLayout:
+							orientation: 'horizontal'
+							BoxLayout:
+								orientation: 'vertical'
+								size_hint_x: 0.6
+								padding: dp(20), dp(30), dp(10), 0
+								spacing: dp(10)
+								Label:
+									text: 'Try carpooling'
+									font_size: '16sp'
+									color: 0, 0, 0, 1
+									bold: True
+								Label:
+									text: "Sharing a ride with one\nfriend cuts each person's\ncarbon impact in half — or\nmore."
+									font_size: '10sp'
+									color: 0, 0, 0, 1
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(8)
+									Badge:
+										source: 'shadowv1.png'
+										text: '1200g'
+									Badge:
+										source: 'shadowv2.png'
+										text: '+15'
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(30)
+									padding: dp(20), 0, 0, 0
+									Image:
+										source: 'card21.png'
+									Image:
+										source: 'card22.png'
+							BoxLayout:
+								size_hint_x: 0.4
+								RelativeLayout:
+									padding: 0, dp(30), 0, 0
+									Image:
+										source: 'card32shadow.png'
+										size_hint: None, None
+										size: dp(150), dp(150)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+									Image:
+										source: 'card32img.png'
+										size_hint: None, None
+										size: dp(130), dp(130)
+					Card:
+						BoxLayout:
+							orientation: 'horizontal'
+							BoxLayout:
+								orientation: 'vertical'
+								size_hint_x: 0.4
+								padding: dp(20), dp(30), dp(10), 0
+								spacing: dp(10)
+								Label:
+									text: 'Unplug idle electronics'
+									font_size: '16sp'
+									color: 0, 0, 0, 1
+									bold: True
+								Label:
+									text: 'Devices in standby mode\nstill consume power —\navoid this “phantom load”\nand save energy daily.'
+									font_size: '10sp'
+									color: 0, 0, 0, 1
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(8)
+									Badge:
+										source: 'shadowv1.png'
+										text: '150g'
+									Badge:
+										source: 'shadowv2.png'
+										text: '+10'
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(15)
+									padding: dp(20), 0, 0, 0
+									Image:
+										source: 'card31.png'
+									Image:
+										source: 'cardgf2.png'
+							BoxLayout:
+								size_hint_x: 0.6
+								RelativeLayout:
+									padding: 0, dp(30), 0, 0
+									Image:
+										source: 'card33shadow.png'
+										size_hint: None, None
+										size: dp(150), dp(150)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+									Image:
+										source: 'card33img.png'
+										size_hint: None, None
+										size: dp(130), dp(130)
+					Card:
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0, 0, 0, 0
+							BoxLayout:
+								orientation: 'vertical'
+								size_hint_x: 0.6
+								padding: dp(20), dp(30), dp(10), 0
+								spacing: dp(10)
+								Label:
+									text: 'Educate a friend about carbon impact'
+									font_size: '16sp'
+									color: 0, 0, 0, 1
+									bold: True
+								Label:
+									text: 'Teaching someone\ndoubles the reach of your\nactions — awareness\ndrives culture change.'
+									font_size: '10sp'
+									color: 0, 0, 0, 1
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(8)
+									Badge:
+										source: 'shadowv1.png'
+										text: '400g'
+									Badge:
+										source: 'shadowv2.png'
+										text: '+15'
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(15)
+									padding: dp(20), 0, 0, 0
+									Image:
+										source: 'card4p1.png'
+									Image:
+										source: 'cardgf2.png'
+									Image:
+										source: 'card4p2.png'
+							BoxLayout:
+								size_hint_x: 0.4
+								RelativeLayout:
+									padding: 0, dp(30), 0, 0
+									Image:
+										source: 'card42shadow.png'
+										size_hint: None, None
+										size: dp(150), dp(150)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+									Image:
+										source: 'card41png.png'
+										size_hint: None, None
+										size: dp(130), dp(130)
+					Card:
+						BoxLayout:
+							orientation: 'horizontal'
+							BoxLayout:
+								orientation: 'vertical'
+								size_hint_x: 0.4
+								padding: dp(20), dp(30), dp(10), 0
+								spacing: dp(10)
+								Label:
+									text: 'Unplug idle electronics'
+									font_size: '16sp'
+									color: 0, 0, 0, 1
+									bold: True
+								Label:
+									text: 'Devices in standby mode\nstill consume power —\navoid this “phantom load”\nand save energy daily.'
+									font_size: '10sp'
+									color: 0, 0, 0, 1
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(8)
+									Badge:
+										source: 'shadowv1.png'
+										text: '150g'
+									Badge:
+										source: 'shadowv2.png'
+										text: '+10'
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: dp(15)
+									padding: dp(20), 0, 0, 0
+									Image:
+										source: 'card31.png'
+									Image:
+										source: 'cardgf2.png'
+							BoxLayout:
+								size_hint_x: 0.6
+								RelativeLayout:
+									padding: 0, dp(30), 0, 0
+									Image:
+										source: 'card33shadow.png'
+										size_hint: None, None
+										size: dp(150), dp(150)
+										pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+									Image:
+										source: 'card33img.png'
+										size_hint: None, None
+										size: dp(130), dp(130)
+	SectionTitle:
+		text: 'Let\u2019s save energy'
+		left_padding: dp(60)
+	CardRow:
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_x: None
+			width: self.minimum_width
+			spacing: dp(120)
+			Widget:
+				size_hint_x: None
+				width: dp(60)
+			Card:
+				BoxLayout:
+					orientation: 'horizontal'
+					padding: 0, 0, 0, 0
+					BoxLayout:
+						orientation: 'vertical'
+						size_hint_x: 0.6
+						padding: dp(20), dp(30), dp(10), 0
+						spacing: dp(10)
+						Label:
+							text: 'Use energy-saving mode on devices'
+							font_size: '16sp'
+							color: 0, 0, 0, 1
+							bold: True
+						Label:
+							text: 'Lower screen brightness,\nreduce refresh rates, and\nactivate eco-mode on\nyour laptop or phone.'
+							font_size: '10sp'
+							color: 0, 0, 0, 1
+						BoxLayout:
+							orientation: 'horizontal'
+							spacing: dp(8)
+							Badge:
+								source: 'shadowv1.png'
+								text: '60g'
+							Badge:
+								source: 'shadowv2.png'
+								text: '+5'
+						BoxLayout:
+							orientation: 'horizontal'
+							spacing: dp(15)
+							padding: dp(20), 0, 0, 0
+							Image:
+								source: 'card31.png'
+							Image:
+								source: 'card32.png'
+					BoxLayout:
+						size_hint_x: 0.4
+						RelativeLayout:
+							padding: 0, dp(30), 0, 0
+							Image:
+								source: 'energy.png'
+								size_hint: None, None
+								size: dp(150), dp(150)
+								pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+							Image:
+								source: 'card3.png'
+								size_hint: None, None
+								size: dp(130), dp(130)
+			Card:
+				BoxLayout:
+					orientation: 'horizontal'
+					BoxLayout:
+						orientation: 'vertical'
+						size_hint_x: 0.4
+						padding: dp(20), dp(30), dp(10), 0
+						spacing: dp(10)
+						Label:
+							text: 'Unplug idle electronics'
+							font_size: '16sp'
+							color: 0, 0, 0, 1
+							bold: True
+						Label:
+							text: 'Devices in standby mode\nstill consume power —\navoid this “phantom load”\nand save energy daily.'
+							font_size: '10sp'
+							color: 0, 0, 0, 1
+						BoxLayout:
+							orientation: 'horizontal'
+							spacing: dp(8)
+							Badge:
+								source: 'shadowv1.png'
+								text: '150g'
+							Badge:
+								source: 'shadowv2.png'
+								text: '+10'
+						BoxLayout:
+							orientation: 'horizontal'
+							spacing: dp(15)
+							padding: dp(20), 0, 0, 0
+							Image:
+								source: 'card31.png'
+							Image:
+								source: 'cardgf2.png'
+					BoxLayout:
+						size_hint_x: 0.6
+						RelativeLayout:
+							padding: 0, dp(30), 0, 0
+							Image:
+								source: 'card33shadow.png'
+								size_hint: None, None
+								size: dp(150), dp(150)
+								pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+							Image:
+								source: 'card33img.png'
+								size_hint: None, None
+								size: dp(130), dp(130)
+	Footer:
+		id: fotter
+
+Body:
