@@ -1,0 +1,567 @@
+#:kivy 2.0.0
+
+<CardWidget>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [20,]
+        Color:
+            rgba: 0, 0, 0, 0.1
+        Line:
+            rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+    
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 0
+        
+        # Left side with text content
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.6
+            padding: 20, 30, 10, 10
+            
+            Label:
+                text: root.title
+                font_size: '16sp'
+                font_name: 'Poppins-Medium'
+                color: 0, 0, 0, 1
+                size_hint_y: None
+                height: '30dp'
+                halign: 'left'
+                valign: 'middle'
+                text_size: self.size
+            
+            Label:
+                text: root.description
+                font_size: '10sp'
+                font_name: 'Poppins-Light'
+                color: 0, 0, 0, 1
+                size_hint_y: None
+                height: '60dp'
+                halign: 'left'
+                valign: 'top'
+                text_size: self.size
+            
+            # CO2 and points indicators
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: '30dp'
+                spacing: 10
+                
+                BoxLayout:
+                    size_hint_x: None
+                    width: '60dp'
+                    canvas.before:
+                        Color:
+                            rgba: 0.8, 0.8, 0.8, 0.3
+                        Ellipse:
+                            pos: self.pos
+                            size: self.size
+                    
+                    Label:
+                        text: root.co2_amount
+                        font_size: '8sp'
+                        color: 0, 0, 0, 1
+                
+                BoxLayout:
+                    size_hint_x: None
+                    width: '40dp'
+                    canvas.before:
+                        Color:
+                            rgba: 0.2, 0.8, 0.2, 0.3
+                        Ellipse:
+                            pos: self.pos
+                            size: self.size
+                    
+                    Label:
+                        text: root.points
+                        font_size: '8sp'
+                        color: 0, 0, 0, 1
+            
+            # Small images row
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: '40dp'
+                spacing: 10
+                
+                AsyncImage:
+                    source: root.small_image1
+                    size_hint: None, None
+                    size: '30dp', '30dp'
+                
+                AsyncImage:
+                    source: root.small_image2
+                    size_hint: None, None
+                    size: '30dp', '30dp'
+                
+                AsyncImage:
+                    source: root.small_image3
+                    size_hint: None, None
+                    size: '30dp', '30dp'
+        
+        # Right side with main image
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.4
+            padding: 0, 30, 20, 0
+            
+            BoxLayout:
+                size_hint_y: None
+                height: '120dp'
+                
+                AsyncImage:
+                    source: root.main_image
+                    size_hint: None, None
+                    size: '80dp', '80dp'
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+<HorizontalCardSection>:
+    orientation: 'vertical'
+    size_hint_y: None
+    height: '300dp'
+    padding: 60, 0, 60, 0
+    
+    Label:
+        text: root.section_title
+        font_size: '13sp'
+        font_name: 'Inter'
+        color: 0.106, 0.263, 0.196, 1
+        size_hint_y: None
+        height: '30dp'
+        halign: 'left'
+        valign: 'middle'
+        text_size: self.size
+    
+    ScrollView:
+        do_scroll_x: True
+        do_scroll_y: False
+        bar_width: 0
+        
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_x: None
+            width: self.minimum_width
+            spacing: 60
+            padding: 0, 35, 0, 35
+            
+            CardWidget:
+                title: root.card1_title
+                description: root.card1_description
+                co2_amount: root.card1_co2
+                points: root.card1_points
+                small_image1: root.card1_small1
+                small_image2: root.card1_small2
+                small_image3: root.card1_small3
+                main_image: root.card1_main
+                size_hint: None, None
+                size: '350dp', '230dp'
+            
+            CardWidget:
+                title: root.card2_title
+                description: root.card2_description
+                co2_amount: root.card2_co2
+                points: root.card2_points
+                small_image1: root.card2_small1
+                small_image2: root.card2_small2
+                small_image3: root.card2_small3
+                main_image: root.card2_main
+                size_hint: None, None
+                size: '350dp', '230dp'
+            
+            CardWidget:
+                title: root.card3_title
+                description: root.card3_description
+                co2_amount: root.card3_co2
+                points: root.card3_points
+                small_image1: root.card3_small1
+                small_image2: root.card3_small2
+                small_image3: root.card3_small3
+                main_image: root.card3_main
+                size_hint: None, None
+                size: '350dp', '230dp'
+            
+            CardWidget:
+                title: root.card4_title
+                description: root.card4_description
+                co2_amount: root.card4_co2
+                points: root.card4_points
+                small_image1: root.card4_small1
+                small_image2: root.card4_small2
+                small_image3: root.card4_small3
+                main_image: root.card4_main
+                size_hint: None, None
+                size: '350dp', '230dp'
+
+<FooterWidget>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 30, 0, 30, 0
+        
+        Widget:
+            size_hint_x: 0.15
+        
+        # Home icon
+        BoxLayout:
+            size_hint_x: None
+            width: '43dp'
+            canvas.before:
+                Color:
+                    rgba: 0.9, 0.9, 0.9, 1
+                Ellipse:
+                    pos: self.pos
+                    size: self.size
+            
+            AsyncImage:
+                source: 'assets/fox.png'
+                size_hint: None, None
+                size: '30dp', '30dp'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        
+        Widget:
+            size_hint_x: 0.1
+        
+        # Search icon
+        BoxLayout:
+            size_hint_x: None
+            width: '43dp'
+            canvas.before:
+                Color:
+                    rgba: 0.9, 0.9, 0.9, 1
+                Ellipse:
+                    pos: self.pos
+                    size: self.size
+            
+            AsyncImage:
+                source: 'assets/search.png'
+                size_hint: None, None
+                size: '30dp', '30dp'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        
+        Widget:
+            size_hint_x: 0.1
+        
+        # Progress icon
+        BoxLayout:
+            size_hint_x: None
+            width: '43dp'
+            canvas.before:
+                Color:
+                    rgba: 0.9, 0.9, 0.9, 1
+                Ellipse:
+                    pos: self.pos
+                    size: self.size
+            
+            AsyncImage:
+                source: 'assets/progress.png'
+                size_hint: None, None
+                size: '30dp', '30dp'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        
+        Widget:
+            size_hint_x: 0.1
+        
+        # Connect icon
+        BoxLayout:
+            size_hint_x: None
+            width: '43dp'
+            canvas.before:
+                Color:
+                    rgba: 0.9, 0.9, 0.9, 1
+                Ellipse:
+                    pos: self.pos
+                    size: self.size
+            
+            AsyncImage:
+                source: 'assets/connect.png'
+                size_hint: None, None
+                size: '30dp', '30dp'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        
+        Widget:
+            size_hint_x: 0.1
+        
+        # Reward icon
+        BoxLayout:
+            size_hint_x: None
+            width: '43dp'
+            canvas.before:
+                Color:
+                    rgba: 0.9, 0.9, 0.9, 1
+                Ellipse:
+                    pos: self.pos
+                    size: self.size
+            
+            AsyncImage:
+                source: 'assets/reward.png'
+                size_hint: None, None
+                size: '30dp', '30dp'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        
+        Widget:
+            size_hint_x: 0.15
+
+<HeaderWidget>:
+    canvas.before:
+        Color:
+            rgba: 0.95, 0.98, 0.99, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 30, 0, 30, 0
+        pos_hint: {'top': 1}
+        
+        # Left side with fox icon and text
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_x: 0.7
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [15,]
+            
+            AsyncImage:
+                source: 'assets/foxh.png'
+                size_hint: None, None
+                size: '30dp', '30dp'
+                pos_hint: {'center_y': 0.5}
+            
+            Label:
+                text: 'Calculate Your Footprint'
+                font_size: '14sp'
+                color: 0, 0, 0, 1
+                size_hint_x: 0.7
+            
+            AsyncImage:
+                source: 'assets/arrow.png'
+                size_hint: None, None
+                size: '20dp', '20dp'
+                pos_hint: {'center_y': 0.5}
+        
+        Widget:
+            size_hint_x: 0.1
+        
+        # User profile image
+        AsyncImage:
+            source: 'assets/user.png'
+            size_hint: None, None
+            size: '50dp', '50dp'
+            pos_hint: {'center_y': 0.5}
+
+<MainScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.95, 0.98, 0.99, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    BoxLayout:
+        orientation: 'vertical'
+        
+        # Header
+        HeaderWidget:
+            size_hint_y: None
+            height: '107dp'
+        
+        # Main scrollable content
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 0, 50, 0, 70
+                
+                # Intro text
+                Label:
+                    text: "It's your chance to\ntake action, Shihab."
+                    font_size: '32sp'
+                    font_name: 'Times-New-Roman'
+                    color: 0.106, 0.263, 0.196, 1
+                    size_hint_y: None
+                    height: '100dp'
+                    halign: 'left'
+                    valign: 'middle'
+                    text_size: self.size
+                    padding: 35, 0, 0, 0
+                
+                # Recommended actions section
+                HorizontalCardSection:
+                    section_title: 'Recommended actions'
+                    card1_title: 'Reduce food waste'
+                    card1_description: 'Saving leftovers or planning\nmeals can reduce waste\nand save up to 500g of CO₂\nper day.'
+                    card1_co2: '400g'
+                    card1_points: '+25'
+                    card1_small1: 'assets/cardgf.png'
+                    card1_small2: 'assets/cardgf2.png'
+                    card1_small3: ''
+                    card1_main: 'assets/meal1.png'
+                    
+                    card2_title: 'Walk for short distances'
+                    card2_description: 'Choosing to walk instead\nof drive for under 3km\ncan save ~0.4kg of CO₂\nper trip.'
+                    card2_co2: '400g'
+                    card2_points: '+5'
+                    card2_small1: 'assets/cardgf.png'
+                    card2_small2: 'assets/card21.png'
+                    card2_small3: 'assets/card22.png'
+                    card2_main: 'assets/walk.png'
+                    
+                    card3_title: 'Use energy-saving mode on devices'
+                    card3_description: 'Lower screen brightness,\nreduce refresh rates, and\nactivate eco-mode on\nyour laptop or phone.'
+                    card3_co2: '60g'
+                    card3_points: '+5'
+                    card3_small1: 'assets/card31.png'
+                    card3_small2: 'assets/card32.png'
+                    card3_small3: ''
+                    card3_main: 'assets/card3.png'
+                    
+                    card4_title: 'Educate a friend about carbon impact'
+                    card4_description: 'Teaching someone\ndoubles the reach of your\nactions — awareness\ndrives culture change.'
+                    card4_co2: '400g'
+                    card4_points: '+15'
+                    card4_small1: 'assets/card4p1.png'
+                    card4_small2: 'assets/cardgf2.png'
+                    card4_small3: 'assets/card4p2.png'
+                    card4_main: 'assets/card41png.png'
+                
+                # Plastic Free section
+                HorizontalCardSection:
+                    section_title: 'Plastic Free!'
+                    card1_title: 'Drink Tap water instead of bottled'
+                    card1_description: 'Switching to refillable\nwater bottles cuts both\nplastic use and ~200g CO₂\nper bottle.'
+                    card1_co2: '200g'
+                    card1_points: '+5'
+                    card1_small1: 'assets/card2p1.png'
+                    card1_small2: 'assets/cardgf2.png'
+                    card1_small3: ''
+                    card1_main: 'assets/beverage2.png'
+                    
+                    card2_title: 'Take part in a local clean-up'
+                    card2_description: 'Cleaning up your\nneighborhood removes waste\nand builds eco-responsibility\nin the community.'
+                    card2_co2: '500g'
+                    card2_points: '+20'
+                    card2_small1: 'assets/gif22.png'
+                    card2_small2: 'assets/card21.png'
+                    card2_small3: ''
+                    card2_main: 'assets/card22img.png'
+                    
+                    card3_title: 'Educate a friend about carbon impact'
+                    card3_description: 'Teaching someone\ndoubles the reach of your\nactions — awareness\ndrives culture change.'
+                    card3_co2: '400g'
+                    card3_points: '+15'
+                    card3_small1: 'assets/card4p1.png'
+                    card3_small2: 'assets/cardgf2.png'
+                    card3_small3: 'assets/card4p2.png'
+                    card3_main: 'assets/card41png.png'
+                    
+                    card4_title: 'Let clothes air-dry today'
+                    card4_description: 'One load in the dryer\nconsumes a lot of energy.\nDrying clothes naturally can\nsave ~2.3kg CO₂.'
+                    card4_co2: '2300g'
+                    card4_points: '+25'
+                    card4_small1: 'assets/cardgf2.png'
+                    card4_small2: 'assets/card22.png'
+                    card4_small3: ''
+                    card4_main: 'assets/card24shadow.png'
+                
+                # New in Greentail section
+                HorizontalCardSection:
+                    section_title: 'New in Greentail'
+                    card1_title: 'Eat more plants this week'
+                    card1_description: 'Eating less meat just\ntwice a week helps\nreduce up to 2.4kg of\nCO₂.'
+                    card1_co2: '2400g'
+                    card1_points: '+10'
+                    card1_small1: 'assets/cardgf.png'
+                    card1_small2: 'assets/cardgf2.png'
+                    card1_small3: ''
+                    card1_main: 'assets/card31shadow.png'
+                    
+                    card2_title: 'Try carpooling'
+                    card2_description: 'Sharing a ride with one\nfriend cuts each person\'s\ncarbon impact in half — or\nmore.'
+                    card2_co2: '1200g'
+                    card2_points: '+15'
+                    card2_small1: 'assets/card21.png'
+                    card2_small2: 'assets/card22.png'
+                    card2_small3: ''
+                    card2_main: 'assets/card32img.png'
+                    
+                    card3_title: 'Unplug idle electronics'
+                    card3_description: 'Devices in standby mode\nstill consume power —\navoid this "phantom load"\nand save energy daily.'
+                    card3_co2: '150g'
+                    card3_points: '+10'
+                    card3_small1: 'assets/card31.png'
+                    card3_small2: 'assets/cardgf2.png'
+                    card3_small3: ''
+                    card3_main: 'assets/card33img.png'
+                    
+                    card4_title: 'Take part in a local clean-up'
+                    card4_description: 'Cleaning up your\nneighborhood removes waste\nand builds eco-responsibility\nin the community.'
+                    card4_co2: '500g'
+                    card4_points: '+25'
+                    card4_small1: 'assets/gif22.png'
+                    card4_small2: 'assets/card21.png'
+                    card4_small3: ''
+                    card4_main: 'assets/card22img.png'
+                
+                # Let's save energy section
+                HorizontalCardSection:
+                    section_title: 'Let\'s save energy'
+                    card1_title: 'Use energy-saving mode on devices'
+                    card1_description: 'Lower screen brightness,\nreduce refresh rates, and\nactivate eco-mode on\nyour laptop or phone.'
+                    card1_co2: '60g'
+                    card1_points: '+5'
+                    card1_small1: 'assets/card31.png'
+                    card1_small2: 'assets/card32.png'
+                    card1_small3: ''
+                    card1_main: 'assets/card3.png'
+                    
+                    card2_title: 'Unplug idle electronics'
+                    card2_description: 'Devices in standby mode\nstill consume power —\navoid this "phantom load"\nand save energy daily.'
+                    card2_co2: '150g'
+                    card2_points: '+10'
+                    card2_small1: 'assets/card31.png'
+                    card2_small2: 'assets/cardgf2.png'
+                    card2_small3: ''
+                    card2_main: 'assets/card33img.png'
+                    
+                    card3_title: 'Educate a friend about carbon impact'
+                    card3_description: 'Teaching someone\ndoubles the reach of your\nactions — awareness\ndrives culture change.'
+                    card3_co2: '400g'
+                    card3_points: '+15'
+                    card3_small1: 'assets/card4p1.png'
+                    card3_small2: 'assets/cardgf2.png'
+                    card3_small3: 'assets/card4p2.png'
+                    card3_main: 'assets/card41png.png'
+                    
+                    card4_title: 'Unplug idle electronics'
+                    card4_description: 'Devices in standby mode\nstill consume power —\navoid this "phantom load"\nand save energy daily.'
+                    card4_co2: '150g'
+                    card4_points: '+10'
+                    card4_small1: 'assets/card31.png'
+                    card4_small2: 'assets/cardgf2.png'
+                    card4_small3: ''
+                    card4_main: 'assets/card33img.png'
+        
+        # Footer
+        FooterWidget:
+            size_hint_y: None
+            height: '77dp'
